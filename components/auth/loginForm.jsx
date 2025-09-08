@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import "./style.css";
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -26,7 +25,7 @@ function LoginForm({ onLogin }) {
       );
 
       onLogin(token);
-      navigate("/search");
+      navigate("/home");
     } catch (err) {
       console.log(err);
     }

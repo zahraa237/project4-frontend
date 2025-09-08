@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router";
 import LoginForm from "../components/auth/loginForm";
 import SignUp from "../components/auth/signupForm";
 import ProtectedRoute from "../components/auth/protectedRoute";
+import HomePage from "../components/homePage/homepage";
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -29,6 +30,7 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/home" element={<HomePage />} />
         </Routes>
       </Router>
     </>
