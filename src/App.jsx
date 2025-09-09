@@ -6,6 +6,7 @@ import LoginForm from "../components/auth/loginForm";
 import SignUp from "../components/auth/signupForm";
 import ProtectedRoute from "../components/auth/protectedRoute";
 import HomePage from "../components/homePage/homepage";
+import Layout from "../components/sidebar/sidebar";
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -19,9 +20,8 @@ const App = () => {
     try {
       const decodedToken = jwtDecode(token);
       user = decodedToken;
-      console.log(decodedToken);
-    } catch (err) {
-      console.error("Invalid token", err);
+    } catch (error) {
+      console.error("Invalid token", error);
     }
   }
   return (
@@ -30,7 +30,16 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route element={<Layout user={user} />}>
+            <Route
+              path="/home"
+              element={
+                <ProtectedRoute>
+                  <HomePage />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
         </Routes>
       </Router>
     </>
