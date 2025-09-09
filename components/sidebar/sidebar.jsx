@@ -17,8 +17,8 @@ const Layout = () => {
       <aside className="sidebar">
         <h2 className="logo">welcome {user.username}</h2>
         <nav className="nav-links">
-          <NavLink to="/search">Search</NavLink>
-          <NavLink to="/lists">My Lists</NavLink>
+          <NavLink to="/session/new">new session</NavLink>
+          <NavLink to="/home">profile</NavLink>
           <button className="logout-button" onClick={handleLogout}>
             Logout
           </button>
