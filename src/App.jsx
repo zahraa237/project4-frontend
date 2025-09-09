@@ -7,6 +7,7 @@ import SignUp from "../components/auth/signupForm";
 import ProtectedRoute from "../components/auth/protectedRoute";
 import HomePage from "../components/homePage/homepage";
 import Layout from "../components/sidebar/sidebar";
+import CreateSession from "../components/createSession/createSession";
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -39,6 +40,7 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
+            <Route path="/session/new" element={<CreateSession />} />
           </Route>
         </Routes>
       </Router>
