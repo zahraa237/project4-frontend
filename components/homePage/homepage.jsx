@@ -4,10 +4,10 @@ import axios from "axios";
 function HomePage() {
   const [user, setUser] = useState(null);
   const [sessions, setSessions] = useState([]);
-  // const [showForm, setShowForm] = useState(false);
-  const [title, setTitle] = useState("");
-  const [time, setTime] = useState("");
-  const [treeType, setTreeType] = useState("");
+  const [showDay, setShowDay] = useState(false);
+  const [showWeek, setShowWeek] = useState(false);
+  const [showMonth, setShowMonth] = useState(false);
+  const [showYear, setShowYear] = useState(false);
 
   const token = localStorage.getItem("token");
 
@@ -33,6 +33,12 @@ function HomePage() {
 
   return (
     <div className="home-page">
+      <div className="profile-buttons">
+        <button onClick={() => setShowDay(!showDay)}>Day</button>
+        <button onClick={() => setShowWeek(!showWeek)}>Week</button>
+        <button onClick={() => setShowMonth(!showMonth)}>Month</button>
+        <button onClick={() => setShowYear(!showYear)}>Year</button>
+      </div>
       {/* <button onClick={() => setShowForm(true)}>Create session</button> */}
 
       <h2>Your Sessions</h2>

@@ -18,7 +18,8 @@ const Layout = () => {
         <h2 className="logo">welcome {user.username}</h2>
         <nav className="nav-links">
           <NavLink to="/session/new">new session</NavLink>
-          <NavLink to="/home">profile</NavLink>
+          <NavLink to="/home">history</NavLink>
+          <NavLink to="/profile">profile</NavLink>
           <button className="logout-button" onClick={handleLogout}>
             Logout
           </button>

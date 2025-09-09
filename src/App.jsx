@@ -8,6 +8,7 @@ import ProtectedRoute from "../components/auth/protectedRoute";
 import HomePage from "../components/homePage/homepage";
 import Layout from "../components/sidebar/sidebar";
 import CreateSession from "../components/createSession/createSession";
+import Profile from "../components/profile/profile";
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -41,6 +42,7 @@ const App = () => {
               }
             />
             <Route path="/session/new" element={<CreateSession />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
         </Routes>
       </Router>
