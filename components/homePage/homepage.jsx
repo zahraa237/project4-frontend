@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import dayjs from "dayjs";
 
 function HomePage() {
   const [user, setUser] = useState(null);
@@ -31,6 +32,23 @@ function HomePage() {
     fetchData();
   }, []);
 
+  const filteredSessions = sessions.filter((session) => {
+    const sessionDate = dayjs(session.date);
+    const today = dayjs();
+
+    if (showDay) {
+      return sessionDate.isSame(today, "day");
+    } else if (showWeek) {
+      return sessionDate.isSame(today, "week");
+    } else if (showMonth) {
+      return sessionDate.isSame(today, "month");
+    } else if (showYear) {
+      return sessionDate.isSame(today, "year");
+    }
+
+    return true;
+  });
+
   return (
     <div className="home-page">
       <div className="profile-buttons">
@@ -43,11 +61,12 @@ function HomePage() {
 
       <h2>Your Sessions</h2>
       <ul>
-        {sessions.length > 0 ? (
-          sessions.map((session) => (
+        {filteredSessions.length > 0 ? (
+          filteredSessions.map((session) => (
             <li key={session._id}>
               <strong>{session.title}</strong> - {session.time} mins -{" "}
-              {session.tree.type} - {session.completed ? "yes" : "no"}
+              {session.tree?.type} - {session.completed ? "yes" : "no"} -{" "}
+              {session.date}
             </li>
           ))
         ) : (

@@ -3,6 +3,10 @@
   height: 100vh;
 }
 
+* {
+  color: black;
+}
+
 .sidebar {
   width: 220px;
   background-color: #617891;

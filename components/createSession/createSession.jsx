@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import "./createSession.css";
+
 function CreateSession() {
   //   const [user, setUser] = useState(null);
   //   const [sessions, setSessions] = useState([]);
@@ -12,7 +14,10 @@ function CreateSession() {
 
   const createSession = async (e) => {
     e.preventDefault();
+
     try {
+      console.log("Creating session:", { title, time, treeType });
+
       await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/session/new`,
         { title, time, treeType },
@@ -20,6 +25,7 @@ function CreateSession() {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+
       // setShowForm(false);
       setTitle("");
       setTime("");
@@ -39,10 +45,10 @@ function CreateSession() {
             {/* TITLE */}
             <input
               type="text"
-              placeholder="Title"
+              placeholder="Title here"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              required
+              //required
             />
 
             {/* TIME */}
@@ -51,7 +57,7 @@ function CreateSession() {
               placeholder="Time(minutes)"
               value={time}
               onChange={(e) => setTime(e.target.value)}
-              required
+              //required
             />
 
             {/* TREE TYPE */}
