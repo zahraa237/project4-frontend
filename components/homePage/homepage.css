@@ -1,0 +1,84 @@
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+  padding: 20px;
+  padding-top: 80px;
+  width: calc(100% - 4rem);
+  max-width: 1200px;
+  margin: auto;
+}
+
+.day {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #333;
+}
+.sessions-container {
+  padding: 20px;
+}
+
+.one-session {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  border-radius: 34px;
+  border: 1px solid #ddd;
+  position: relative;
+  padding: 2.8rem;
+}
+
+.session-header {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.session-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+/* .habit-name {
+  font-size: 1.4rem;
+  word-break: break-word;
+}
+.habit-name::first-letter {
+  text-transform: uppercase;
+}
+.habit-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  border-radius: 34px;
+}
+.habit-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3.4rem;
+}
+
+.month-days {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 10px;
+} */

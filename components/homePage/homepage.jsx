@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
+import "./homepage.css";
 
 function HomePage() {
   const [user, setUser] = useState(null);
@@ -57,22 +58,30 @@ function HomePage() {
         <button onClick={() => setShowMonth(!showMonth)}>Month</button>
         <button onClick={() => setShowYear(!showYear)}>Year</button>
       </div>
-      {/* <button onClick={() => setShowForm(true)}>Create session</button> */}
 
       <h2>Your Sessions</h2>
-      <ul>
+      <div className="sessions-container">
         {filteredSessions.length > 0 ? (
           filteredSessions.map((session) => (
-            <li key={session._id}>
-              <strong>{session.title}</strong> - {session.time} mins -{" "}
-              {session.tree?.type} - {session.completed ? "yes" : "no"} -{" "}
-              {session.date}
-            </li>
+            <div className="one-session">
+              <div className="session-header">
+                <img
+                  src={session.tree.type}
+                  alt="tree"
+                  className="session-icon"
+                />
+                <div class="session-name">{session.title}</div>
+              </div>
+              <div className="session-details">
+                {session.time} mins - {session.tree?.type} -{" "}
+                {session.completed ? "yes" : "no"} - {session.date}
+              </div>
+            </div>
           ))
         ) : (
           <p>No sessions yet. Start one!</p>
         )}
-      </ul>
+      </div>
     </div>
   );
 }

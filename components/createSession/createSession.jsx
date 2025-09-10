@@ -18,8 +18,6 @@ function CreateSession() {
     "/trees/5.jpg",
   ];
 
-  // const selectedTree = allTrees.find((tree) => tree === treeType);
-
   const createSession = async (event) => {
     event.preventDefault();
 
@@ -45,40 +43,15 @@ function CreateSession() {
           <h1>Create session</h1>
 
           <form onSubmit={createSession}>
-            {/* TITLE */}
-            <input
-              type="text"
-              placeholder="Title here"
-              value={title}
-              onChange={(event) => setTitle(event.target.value)}
-              required
-            />
-
-            {/* TIME */}
-            <input
-              type="number"
-              placeholder="Time(minutes)"
-              value={time}
-              onChange={(event) => setTime(event.target.value)}
-              required
-            />
-
             {/* TREE TYPE */}
             <div className="tree-picker">
               <img
                 src={treeType}
                 alt="selected tree"
-                className="selected-tree"
+                className="tree-image"
                 onClick={() => setShowTrees(true)}
               />
             </div>
-
-            {/* <input
-              type="text"
-              placeholder="Tree Type"
-              value={treeType}
-              onChange={(event) => setTreeType(event.target.value)}
-            /> */}
 
             {/* choosing a tress */}
             {showTrees && (
@@ -101,6 +74,24 @@ function CreateSession() {
                 </div>
               </div>
             )}
+            {/* TITLE */}
+            <input
+              type="text"
+              placeholder="Title here"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+              required
+            />
+
+            {/* TIME */}
+            <input
+              type="number"
+              placeholder="Time(minutes)"
+              value={time}
+              onChange={(event) => setTime(event.target.value)}
+              required
+            />
+
             <button type="submit">Save</button>
           </form>
         </div>
