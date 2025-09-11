@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import "./homepage.css";
 
 function HomePage() {
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
   const [sessions, setSessions] = useState([]);
   const [showDay, setShowDay] = useState(false);
   const [showWeek, setShowWeek] = useState(false);
@@ -22,7 +22,6 @@ function HomePage() {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      setUser(res.data.user);
       setSessions(res.data.user.sessions || []);
     } catch (error) {
       console.error("Something wrong happened!", error);
@@ -53,10 +52,46 @@ function HomePage() {
   return (
     <div className="home-page">
       <div className="profile-buttons">
-        <button onClick={() => setShowDay(!showDay)}>Day</button>
-        <button onClick={() => setShowWeek(!showWeek)}>Week</button>
-        <button onClick={() => setShowMonth(!showMonth)}>Month</button>
-        <button onClick={() => setShowYear(!showYear)}>Year</button>
+        <button
+          onClick={() => {
+            setShowDay(!showDay),
+              setShowWeek(false),
+              setShowMonth(false),
+              setShowYear(false);
+          }}
+        >
+          Day
+        </button>
+        <button
+          onClick={() => {
+            setShowWeek(!showWeek),
+              setShowDay(false),
+              setShowMonth(false),
+              setShowYear(false);
+          }}
+        >
+          Week
+        </button>
+        <button
+          onClick={() => {
+            setShowMonth(!showMonth),
+              setShowDay(false),
+              setShowWeek(false),
+              setShowYear(false);
+          }}
+        >
+          Month
+        </button>
+        <button
+          onClick={() => {
+            setShowYear(!showYear),
+              setShowDay(false),
+              setShowWeek(false),
+              setShowMonth(false);
+          }}
+        >
+          Year
+        </button>
       </div>
 
       <h2>Your Sessions</h2>
@@ -73,8 +108,7 @@ function HomePage() {
                 <div class="session-name">{session.title}</div>
               </div>
               <div className="session-details">
-                {session.time} mins - {session.tree?.type} -{" "}
-                {session.completed ? "yes" : "no"} - {session.date}
+                {session.time} mins - {session.date}
               </div>
             </div>
           ))

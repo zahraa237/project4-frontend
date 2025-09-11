@@ -1,25 +1,3 @@
-/* ----- Modal Layout ----- */
-/* .modal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 70vh;
-  width: 100%;
-  padding: 20px;
-} */
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100%;
-  background-color: #f4f4f4;
-  /* margin: 0;
-  padding: 0; */
-}
-
 .model-contents {
   color: black;
   display: flex;
@@ -27,15 +5,12 @@ body {
   gap: 15px;
   width: 1000px;
   height: 700px;
-  /* max-width: 400px; */
   align-items: center;
   justify-content: center;
   background-color: #ffeed2;
-  /* padding: 30px; */
   border-radius: 8px;
 }
 
-/* ----- Inputs ----- */
 input[type="text"],
 input[type="number"] {
   padding: 10px;
@@ -44,23 +19,9 @@ input[type="number"] {
   border-radius: 4px;
 }
 
-button[type="submit"] {
-  background-color: #617891;
-  color: white;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100px;
-  align-self: center;
-}
-
 button[type="submit"]:hover {
   background-color: #45a049;
 }
-
-/* ----- Tree Picker ----- */
 .tree-picker {
   text-align: center;
   margin-bottom: 20px;
@@ -72,7 +33,7 @@ button[type="submit"]:hover {
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: transform 0.2s ease, border 0.2s ease;
+  margin-top: 100px;
 }
 
 .tree-image:hover {
@@ -82,6 +43,7 @@ button[type="submit"]:hover {
 
 .all-trees {
   margin-top: 20px;
+  text-align: center;
 }
 
 .tree-options {
@@ -98,7 +60,6 @@ button[type="submit"]:hover {
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: transform 0.2s ease, border 0.2s ease;
 }
 
 .tree-option img:hover {

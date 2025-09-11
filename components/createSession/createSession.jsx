@@ -2,11 +2,14 @@ import { useState } from "react";
 import axios from "axios";
 import "./createSession.css";
 
+import Timer from "../timer/timer";
+
 function CreateSession() {
   const [title, setTitle] = useState("");
   const [time, setTime] = useState("");
   const [treeType, setTreeType] = useState("/trees/1.jpg");
   const [showTrees, setShowTrees] = useState(false);
+  const [sessionId, setSessionId] = useState(null);
 
   const token = localStorage.getItem("token");
 
@@ -16,19 +19,23 @@ function CreateSession() {
     "/trees/3.jpg",
     "/trees/4.jpg",
     "/trees/5.jpg",
+    "/trees/6.jpg",
+    "/trees/7.jpg",
   ];
 
   const createSession = async (event) => {
     event.preventDefault();
 
     try {
-      await axios.post(
+      const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/session/new`,
         { title, time, treeType },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+      console.log(res.data);
+      setSessionId(res.data.session._id);
       setTitle("");
       setTime("");
     } catch (error) {
@@ -40,7 +47,7 @@ function CreateSession() {
     <>
       <div className="modal">
         <div className="model-contents">
-          <h1>Create session</h1>
+          <h1>start planting</h1>
 
           <form onSubmit={createSession}>
             {/* TREE TYPE */}
@@ -54,9 +61,9 @@ function CreateSession() {
             </div>
 
             {/* choosing a tress */}
-            {showTrees && (
+            {showTrees ? (
               <div className="all-trees">
-                <h3>Choose a tree</h3>
+                <h3>Choose a plant</h3>
 
                 <div className="tree-options">
                   {allTrees.map((img) => (
@@ -73,11 +80,11 @@ function CreateSession() {
                   ))}
                 </div>
               </div>
-            )}
+            ) : null}
             {/* TITLE */}
             <input
               type="text"
-              placeholder="Title here"
+              placeholder="session name"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
               required
@@ -86,7 +93,7 @@ function CreateSession() {
             {/* TIME */}
             <input
               type="number"
-              placeholder="Time(minutes)"
+              placeholder="Time in minutes"
               value={time}
               onChange={(event) => setTime(event.target.value)}
               required
@@ -94,6 +101,8 @@ function CreateSession() {
 
             <button type="submit">Save</button>
           </form>
+
+          {sessionId ? <Timer sessionId={sessionId} /> : null}
         </div>
       </div>
     </>

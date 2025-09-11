@@ -31,7 +31,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/" element={<SignUp />} />
           <Route element={<Layout user={user} />}>
             <Route
               path="/home"
